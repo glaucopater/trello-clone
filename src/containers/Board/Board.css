@@ -1,0 +1,8 @@
+.Board {
+  margin: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  height: calc(100vh - 100px);
+  background: darkblue;
+}
