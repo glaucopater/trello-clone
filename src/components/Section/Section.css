@@ -1,0 +1,28 @@
+.Section {
+  border: 2px solid #ccc;
+  background: #ebecf0;
+  margin: 4px;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 150px);
+  width: 272px;
+}
+
+.Section-Title {
+  padding: 8px;
+  margin: 4px;
+  font-weight: 700;
+  position: sticky;
+  top: 0px;
+  background: #ebecf0;
+}
+
+.List {
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  margin: none;
+  list-style-type: none;
+  padding: 0;
+  overflow-y: scroll;
+}

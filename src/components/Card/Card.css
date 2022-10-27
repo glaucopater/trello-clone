@@ -1,0 +1,15 @@
+.Card {
+  margin: 4px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: #ffffff;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.Card:hover {
+  background: #ffffff50;
+  cursor: pointer;
+  transition: ease-in-out 300ms;
+}
