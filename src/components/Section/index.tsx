@@ -1,20 +1,31 @@
-import { Card } from "../Card/";
-import { generateRandomArray } from "../../utils/";
+import { Card, CardProps } from "../Card/";
 import "./Section.css";
+import { useContext } from "react";
+import { BoardContext, ContextProps } from "../../contexts/BoardContext";
 
 export type SectionProps = {
-  title: string;
+  id: string;
+  name: string;
+  cards: CardProps[];
 };
 
 // each list could have different height, but the width should be dynamic
 export const Section = (props: SectionProps) => {
+  const initialStore = useContext(BoardContext);
+  const { addCard } = (initialStore as ContextProps) || {};
+
+  const handleAddCard = () => {
+    addCard(props.id);
+  };
+
   return (
     <section className="Section">
-      <span className="Section-Title">{props.title}</span>
+      <span className="Section-Title">{props.name}</span>
+      <button onClick={handleAddCard}>Add</button>
       <ul className="List">
-        {generateRandomArray().map((_item, index) => (
+        {props.cards.map((item, index) => (
           <li key={index}>
-            <Card />
+            <Card {...item} />
           </li>
         ))}
       </ul>
