@@ -8,7 +8,7 @@ const defaultCardContent = generateRandomContent(10);
 export type CardProps = {
   id: string;
   content?: string;
-  currentCategory: string;
+  currentSwimlane: string;
 };
 
 export const Card = (cardProps: CardProps) => {
@@ -21,7 +21,7 @@ export const Card = (cardProps: CardProps) => {
 
   const handleOnDragStart = (event: DragEvent<HTMLElement>, id: string) => {
     event.dataTransfer.setData("id", id);
-    event.dataTransfer.setData("category", cardProps.currentCategory);
+    event.dataTransfer.setData("swimlane", cardProps.currentSwimlane);
   };
 
   return (

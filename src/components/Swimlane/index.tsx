@@ -31,7 +31,7 @@ export const Swimlane = (props: SwimlaneProps) => {
     dataTransfer: { getData: (arg0: string) => any };
   }) => {
     const id = event.dataTransfer.getData("id");
-    const fromSwimlaneId = event.dataTransfer.getData("category");
+    const fromSwimlaneId = event.dataTransfer.getData("swimlane");
     moveCard(id, fromSwimlaneId, props.id);
   };
 
@@ -42,11 +42,13 @@ export const Swimlane = (props: SwimlaneProps) => {
       onDrop={handleOnDrop}
       onDragOver={handleOnDragOver}
     >
-      <span className="Swimlane-Title">{props.name}</span>
+      <span className="Swimlane-Title">
+        {props.name} ({props.cards.length})
+      </span>
       <ul className="List">
         {props.cards.map((item, index) => (
           <li key={index}>
-            <Card {...item} currentCategory={props.id} />
+            <Card {...item} currentSwimlane={props.id} />
           </li>
         ))}
       </ul>
