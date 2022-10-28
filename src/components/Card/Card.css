@@ -6,6 +6,7 @@
   background: #ffffff;
   max-height: 300px;
   overflow-y: scroll;
+  transition: ease-in-out 300ms;
 }
 
 .Card:hover {

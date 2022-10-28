@@ -2,6 +2,7 @@ import { Card, CardProps } from "../Card/";
 import "./Section.css";
 import { useContext } from "react";
 import { BoardContext, ContextProps } from "../../contexts/BoardContext";
+import { AddButton } from "../AddButton";
 
 export type SectionProps = {
   id: string;
@@ -21,7 +22,6 @@ export const Section = (props: SectionProps) => {
   return (
     <section className="Section">
       <span className="Section-Title">{props.name}</span>
-      <button onClick={handleAddCard}>Add</button>
       <ul className="List">
         {props.cards.map((item, index) => (
           <li key={index}>
@@ -29,6 +29,7 @@ export const Section = (props: SectionProps) => {
           </li>
         ))}
       </ul>
+      <AddButton onClickHandler={handleAddCard} id={props.id} />
     </section>
   );
 };

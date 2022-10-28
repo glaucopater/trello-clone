@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from "react";
 import { SectionProps } from "../../components/Section";
 import { useBoardReducer } from "../../hooks/useBoardReducer";
-import { ReducerActionType } from "../../hooks/useBoardReducer/types";
+import { ReducerActionType } from "../../hooks/useBoardReducer/actions";
 import { initialState } from "../../store";
 
 export type ContextProps = {
@@ -20,13 +20,19 @@ export const BoardProvider = ({ children }: { children: React.ReactNode }) => {
     addCard: (sectionId: string) => {
       dispatch({
         type: ReducerActionType.CREATE_CARD,
-        payload: { id: sectionId, name: "TS", cards: [] },
+        payload: { id: sectionId, name: "New!", cards: [] },
       });
     },
     deleteCard: (id: string) => {
       dispatch({
         type: ReducerActionType.DELETE_CARD,
-        payload: { id, name: "TS", cards: [] },
+        payload: { id, name: "New", cards: [] },
+      });
+    },
+    moveCard: (id: string, fromSectionId: string, toSectionId: string) => {
+      dispatch({
+        type: ReducerActionType.MOVE_CARD,
+        payload: { id, fromSectionId, toSectionId  },
       });
     },
   };
