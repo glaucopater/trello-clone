@@ -17,7 +17,6 @@ export const Header = () => {
       <h1>
         {packageJSON.title} <TitleImage />
       </h1>
-      <span>Total Sections: {sectionsList.length}</span>
       <span>
         Total Cards:
         {sectionsList.reduce((prev, curr) => prev + curr.cards.length, 0)}

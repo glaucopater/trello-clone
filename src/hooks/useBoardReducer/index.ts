@@ -46,9 +46,7 @@ export const useBoardReducer: Reducer<SectionProps[], ReducerAction> = (
         todo.id === editedCard.id ? editedCard : todo
       );
     }
-
     case ReducerActionType.MOVE_CARD: {
-      //const movedCard = action.payload;
       return state;
     }
     default:

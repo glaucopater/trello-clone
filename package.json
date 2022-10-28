@@ -1,7 +1,7 @@
 {
   "name": "bash",
   "title": "Trello Clone",
-  "version": "npm init @eslint/config",
+  "version": "1.0.0",
   "license": "MIT",
   "private": true,
   "dependencies": {
@@ -24,7 +24,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "pretty": "yarn prettier --write .",
-    "lint": "eslint --ext=ts,tsx --max-warnings 0",
+    "lint": "eslint --ext=ts,tsx --max-warnings 0 .",
     "prepare": "husky install"
   },
   "eslintConfig": {

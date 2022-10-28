@@ -1,6 +1,6 @@
 .AddButton {
   border-radius: 3px;
-  color: var(--ds-text-subtle, #5e6c84);
+  color: #111;
   display: block;
   flex: 1 0 auto;
   margin: 2px 0 8px 8px;
@@ -15,6 +15,7 @@
 .AddButton:hover {
   cursor: pointer;
   transition: ease-in-out 300ms;
+  background: #effeec;
 }
 
 .AddButton::after {

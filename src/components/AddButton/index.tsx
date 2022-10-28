@@ -13,6 +13,6 @@ export const AddButton = (cardProps: AddButtonProps) => {
   };
 
   return (
-    <button className="AddButton" onClick={(e) => handleOnClick(cardProps.id)(e)}>Add</button>
+    <button className="AddButton" onClick={(e) => handleOnClick(cardProps.id)(e)}>Add Card</button>
   );
 };
