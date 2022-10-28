@@ -19,9 +19,11 @@ export const Card = (cardProps: CardProps) => {
   };
 
   return (
-    <article className="Card">
+    <article className="Card" id={"card-" + cardProps.id}>
       {cardProps.content || defaultCardContent}
-      <button onClick={(e) => handleDeleteCard(cardProps.id)(e)}>Remove</button>
+      <button onClick={(e) => handleDeleteCard(cardProps.id)(e)}>
+        Remove Card
+      </button>
     </article>
   );
 };

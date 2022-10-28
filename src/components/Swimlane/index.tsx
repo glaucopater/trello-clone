@@ -19,8 +19,10 @@ export const Swimlane = (props: SwimlaneProps) => {
     addCard(props.id);
   };
 
+
+
   return (
-    <section className="Swimlane">
+    <section className="Swimlane" id={"swimlane-" + props.id}>
       <span className="Swimlane-Title">{props.name}</span>
       <ul className="List">
         {props.cards.map((item, index) => (

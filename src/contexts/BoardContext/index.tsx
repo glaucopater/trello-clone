@@ -8,6 +8,7 @@ export type ContextProps = {
   swimlaneList: SwimlaneProps[];
   addCard: (swimlaneId: string) => void;
   deleteCard: (cardId: string) => void;
+  moveCard: (cardId: string, fromSwimlaneId: string, toSwimlaneId: string) => void;
 };
 
 export const BoardContext = createContext<ContextProps | undefined>(undefined);
