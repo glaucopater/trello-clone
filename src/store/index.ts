@@ -1,6 +1,6 @@
-import { SectionProps } from "../components/Section";
+import { SwimlaneProps } from "../components/Swimlane";
 
-export const initialState: SectionProps[] = [
+export const initialState: SwimlaneProps[] = [
   {
     id: "1",
     name: "To Do",

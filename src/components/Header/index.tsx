@@ -11,7 +11,7 @@ export const TitleImage = () => (
 
 export const Header = () => {
   const initialStore = useContext(BoardContext);
-  const { sectionsList } = (initialStore as ContextProps) || {};
+  const { swimlaneList } = (initialStore as ContextProps) || {};
   return (
     <header className="Header">
       <h1>
@@ -19,7 +19,7 @@ export const Header = () => {
       </h1>
       <span>
         Total Cards:
-        {sectionsList.reduce((prev, curr) => prev + curr.cards.length, 0)}
+        {swimlaneList.reduce((prev, curr) => prev + curr.cards.length, 0)}
       </span>
     </header>
   );

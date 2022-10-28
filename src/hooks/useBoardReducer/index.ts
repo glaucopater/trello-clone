@@ -1,44 +1,44 @@
 import { Reducer } from "react";
-import { SectionProps } from "../../components/Section";
+import { SwimlaneProps } from "../../components/Swimlane";
 import { generateRandomId, sortArrayById } from "../../utils";
 import { ReducerAction, ReducerActionType } from "./actions";
 
-export const useBoardReducer: Reducer<SectionProps[], ReducerAction> = (
+export const useBoardReducer: Reducer<SwimlaneProps[], ReducerAction> = (
   state = [],
   action
 ) => {
   switch (action.type) {
     case ReducerActionType.CREATE_CARD:
-      const selectedSectionId = action.payload;
-      const selectedSection = state.filter(
-        (section) => section.id === selectedSectionId.id
+      const selectedSwimlaneId = action.payload;
+      const selectedSwimlane = state.filter(
+        (swimlane) => swimlane.id === selectedSwimlaneId.id
       )[0];
-      const updatedSection = {
-        ...selectedSection,
+      const updatedSwimlane = {
+        ...selectedSwimlane,
         cards: [
-          ...selectedSection.cards,
+          ...selectedSwimlane.cards,
           { id: generateRandomId(), content: "new card" },
         ],
       };
 
-      const theOtherSections = state.filter(
-        (section) => section.id !== selectedSection.id
+      const theOtherSwimlanes = state.filter(
+        (swimlane) => swimlane.id !== selectedSwimlane.id
       );
 
-      return sortArrayById([...theOtherSections, updatedSection]);
+      return sortArrayById([...theOtherSwimlanes, updatedSwimlane]);
 
     case ReducerActionType.DELETE_CARD: {
-      // delete card by section and id
+      // delete card by swimlane and id
       const cardToBeDeleted = action.payload;
-      const updatedSection = state.map((section) => {
+      const updatedSwimlane = state.map((swimlane) => {
         return {
-          id: section.id,
-          name: section.name,
-          cards: section.cards.filter((card) => card.id !== cardToBeDeleted.id),
+          id: swimlane.id,
+          name: swimlane.name,
+          cards: swimlane.cards.filter((card) => card.id !== cardToBeDeleted.id),
         };
       });
 
-      return updatedSection;
+      return updatedSwimlane;
     }
     case ReducerActionType.EDIT_CARD: {
       const editedCard = action.payload;

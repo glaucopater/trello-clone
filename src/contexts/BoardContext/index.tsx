@@ -1,12 +1,12 @@
 import React, { createContext, useReducer } from "react";
-import { SectionProps } from "../../components/Section";
+import { SwimlaneProps } from "../../components/Swimlane";
 import { useBoardReducer } from "../../hooks/useBoardReducer";
 import { ReducerActionType } from "../../hooks/useBoardReducer/actions";
 import { initialState } from "../../store";
 
 export type ContextProps = {
-  sectionsList: SectionProps[];
-  addCard: (sectionId: string) => void;
+  swimlaneList: SwimlaneProps[];
+  addCard: (swimlaneId: string) => void;
   deleteCard: (cardId: string) => void;
 };
 
@@ -16,11 +16,11 @@ export const BoardProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(useBoardReducer, initialState);
 
   const value = {
-    sectionsList: state,
-    addCard: (sectionId: string) => {
+    swimlaneList: state,
+    addCard: (swimlaneId: string) => {
       dispatch({
         type: ReducerActionType.CREATE_CARD,
-        payload: { id: sectionId, name: "New!", cards: [] },
+        payload: { id: swimlaneId, name: "New!", cards: [] },
       });
     },
     deleteCard: (id: string) => {
@@ -29,10 +29,10 @@ export const BoardProvider = ({ children }: { children: React.ReactNode }) => {
         payload: { id, name: "New", cards: [] },
       });
     },
-    moveCard: (id: string, fromSectionId: string, toSectionId: string) => {
+    moveCard: (id: string, fromSwimlaneId: string, toSwimlaneId: string) => {
       dispatch({
         type: ReducerActionType.MOVE_CARD,
-        payload: { id, fromSectionId, toSectionId  },
+        payload: { id, fromSwimlaneId, toSwimlaneId  },
       });
     },
   };
