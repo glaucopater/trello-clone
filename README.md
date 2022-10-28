@@ -40,12 +40,10 @@ Reduce rerendering
 # Todo
 
 - Drag and drop for cards
+- Edit: Card content should be rich text
 - Menu for the lanes (to add card, rename lane)
-- Card content should be rich text
 - Store the state inside localStorage, in case of update apply the changes, load it as initialState
 - Demo on vercel
-
-
 
 ## Available Scripts
 

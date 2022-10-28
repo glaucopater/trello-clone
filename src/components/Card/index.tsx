@@ -1,4 +1,4 @@
-import { SyntheticEvent, useContext } from "react";
+import { DragEvent, SyntheticEvent, useContext } from "react";
 import { BoardContext, ContextProps } from "../../contexts/BoardContext";
 import { generateRandomContent } from "../../utils/index";
 import "./Card.css";
@@ -8,6 +8,7 @@ const defaultCardContent = generateRandomContent(10);
 export type CardProps = {
   id: string;
   content?: string;
+  currentCategory: string;
 };
 
 export const Card = (cardProps: CardProps) => {
@@ -18,8 +19,18 @@ export const Card = (cardProps: CardProps) => {
     deleteCard(id);
   };
 
+  const handleOnDragStart = (event: DragEvent<HTMLElement>, id: string) => {
+    event.dataTransfer.setData("id", id);
+    event.dataTransfer.setData("category", cardProps.currentCategory);
+  };
+
   return (
-    <article className="Card" id={"card-" + cardProps.id}>
+    <article
+      className="Card"
+      id={"card-" + cardProps.id}
+      draggable
+      onDragStart={(e) => handleOnDragStart(e, cardProps.id)}
+    >
       {cardProps.content || defaultCardContent}
       <button onClick={(e) => handleDeleteCard(cardProps.id)(e)}>
         Remove Card
