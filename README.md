@@ -1,12 +1,60 @@
-# Getting Started with Create React App
+# Getting Started with Trello Clone
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+After some consideration on the UI I implemented the skeleton of the application, starting from the ui components, then the state manager and then refining all the other UX aspects.
+
+# State manager 
+For the state management my choice went on implementing a simple state manager based on React Context (in order to share a store in different part of the application) and a custom hook using useReducer.
+All the logic about dispatching action and a copy of the new state are delegated to it.
+
+# UI
+The header shows the number of existing cards.
+Each lanes can contain different cards.
+I opted for a different flow in removing a card, as Trello has a different approach storing the deleted card inside an archive.
+Models
+
+Each item: lanes, card and board has common prop: unique id, name, title, content.
+
+Board:
+- swimlane:
+    [{ Id, name, cards:[
+        id, content
+    ]}
+
+# Tests
+I focused only on the business logic of the application and not on the rendering logic.
+
+# Ship to prod
+Thanks to husky each commit and push perform unit tests, eslint, prettify the code. 
+Then deploy it on netlify (demo).
+
+# Performance
+Reduce rerendering
+
+# Features
+- Showing the new cards added (check diff between original state and current one) in the header (similarly to the notification in Trello)
+- Counter on columns, if there are more then 7 items is difficult to count them.
+- Minimal Modal component for editing
+- Delete or archive? For the moment I opted for deleting a card
+
+# Todo
+
+- Drag and drop for cards
+- Menu for the lanes (to add card, rename lane)
+- Card content should be rich text
+- Store the state inside localStorage, in case of update apply the changes, load it as initialState
+- Demo on vercel
+
+
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `yarn`
+Install all dependencies and husky hooks
+
+### `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -19,7 +67,7 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### `yarn build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -29,18 +77,4 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
