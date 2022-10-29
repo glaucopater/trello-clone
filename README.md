@@ -39,9 +39,7 @@ Reduce rerendering
 
 # Todo
 
-- Edit: Card content should be rich text
 - Store the state inside localStorage, in case of update apply the changes, load it as initialState
-- Fix style on Windows
 - Menu for the lanes (to add card, rename lane)
 - Demo on vercel
 

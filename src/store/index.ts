@@ -27,7 +27,7 @@ export const initialState: SwimlaneProps[] = [
     name: "In progress",
     cards: [
       {
-        id: "1",
+        id: "2.1",
         content: "lorem ipsum 2.1",
         currentSwimlaneId: "2"
       },

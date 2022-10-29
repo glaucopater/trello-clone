@@ -4,7 +4,7 @@ import "./AddButton.css";
 export type AddButtonProps = {
   id: string;
   content?: string;
-  onClickHandler: (props: any) => void;
+  onClickHandler: (id: string) => void;
 };
 
 export const AddButton = (cardProps: AddButtonProps) => {
@@ -13,6 +13,11 @@ export const AddButton = (cardProps: AddButtonProps) => {
   };
 
   return (
-    <button className="AddButton" onClick={(e) => handleOnClick(cardProps.id)(e)}>Add Card</button>
+    <button
+      className="AddButton"
+      onClick={(e) => handleOnClick(cardProps.id)(e)}
+    >
+      Add Card
+    </button>
   );
 };

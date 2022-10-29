@@ -21,7 +21,6 @@ export const getTextArea = (
   const [currentContent, setContent] = useState(content);
 
   const handleOnChange = (event: any) => {
-    console.log(event.target.value);
     setContent(event.target.value);
   };
 
@@ -52,6 +51,12 @@ export const Card = (cardProps: CardProps) => {
     setIsEditable(true);
   };
 
+  const handleOnCancel = () => {
+    setIsEditable((prev) => !prev);
+    setCurrentContent(cardProps.content);
+    setIsEditable(false);
+  };
+
   const handleOnDragStart = (event: DragEvent<HTMLElement>, id: string) => {
     event.dataTransfer.setData("id", id);
     event.dataTransfer.setData("swimlane", cardProps.currentSwimlaneId);
@@ -60,13 +65,11 @@ export const Card = (cardProps: CardProps) => {
   const handleOnChangeContent = (event: {
     target: { value: SetStateAction<string | undefined> };
   }) => {
-    console.log(event.target.value);
     setCurrentContent(event.target.value);
   };
 
   const handleOnSaveContent = (event: any) => {
     setCurrentContent(event.target.value);
-
     const updatedCard = { ...cardProps, content: currentContent };
     editCard({ ...updatedCard }, cardProps.currentSwimlaneId);
     setIsEditable(false);
@@ -78,19 +81,44 @@ export const Card = (cardProps: CardProps) => {
       id={"card-" + cardProps.id}
       draggable
       onDragStart={(e) => handleOnDragStart(e, cardProps.id)}
+      title="Drag me!"
     >
       {isEditable ? (
         <>
           <textarea value={currentContent} onChange={handleOnChangeContent} />
-          <button onClick={handleOnSaveContent}>Save</button>
+          <div>
+            <button onClick={handleOnSaveContent} title="Save Card">
+              <span role="img" aria-labelledby="Save Card">
+                💾
+              </span>
+            </button>
+            <button onClick={handleOnCancel} title="Cancel">
+              <span role="img" aria-labelledby="Cancel">
+                ↶
+              </span>
+            </button>
+          </div>
         </>
       ) : (
         <>
           {currentContent}
-          <button onClick={handleEditCard}>Edit Card</button>
+          <div>
+            <button onClick={handleEditCard} title="edit card">
+              <span role="img" aria-labelledby="Edit Card">
+                ✏️
+              </span>
+            </button>
+            <button
+              onClick={(e) => handleDeleteCard(cardProps.id)(e)}
+              title="Delete Card"
+            >
+              <span role="img" aria-labelledby="Delete Card">
+                🗑️
+              </span>
+            </button>
+          </div>
         </>
       )}
-      <button onClick={(e) => handleDeleteCard(cardProps.id)(e)}>Remove</button>
     </article>
   );
 };

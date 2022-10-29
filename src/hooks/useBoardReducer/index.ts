@@ -1,5 +1,5 @@
 import { Reducer } from "react";
-import { Swimlane, SwimlaneProps } from "../../components/Swimlane";
+import { SwimlaneProps } from "../../components/Swimlane";
 import { generateRandomId, sortArrayById } from "../../utils";
 import { ReducerAction, ReducerActionType } from "./actions";
 
