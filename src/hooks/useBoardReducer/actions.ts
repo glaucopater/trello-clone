@@ -8,6 +8,9 @@ export enum ReducerActionType {
   DELETE_CARD,
   EDIT_CARD,
   MOVE_CARD,
+  LOAD_LOCALSTORAGE,
+  UPDATE_LOCALSTORAGE,
+  RESET_BOARD,
 }
 
 export type CreateSwimlaneAction = {
@@ -40,10 +43,26 @@ export type DeleteCardAction = {
   payload: SwimlaneProps;
 };
 
+export type LoadLocalStorage = {
+  type: ReducerActionType.LOAD_LOCALSTORAGE;
+};
+
+export type UpdateLocalStorage = {
+  type: ReducerActionType.UPDATE_LOCALSTORAGE;
+  payload: SwimlaneProps[];
+};
+
+export type ResetBoard = {
+  type: ReducerActionType.RESET_BOARD;
+};
+
 export type ReducerAction =
   | CreateSwimlaneAction
   | EditSwimlaneAction
   | CreateCardAction
   | DeleteCardAction
   | EditCardAction
-  | MoveCardAction;
+  | MoveCardAction
+  | LoadLocalStorage
+  | UpdateLocalStorage
+  | ResetBoard;

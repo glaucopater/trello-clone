@@ -1,5 +1,6 @@
 import { Reducer } from "react";
 import { SwimlaneProps } from "../../components/Swimlane";
+import { initialState } from "../../store";
 import { generateRandomId, sortArrayById } from "../../utils";
 import { ReducerAction, ReducerActionType } from "./actions";
 
@@ -65,7 +66,6 @@ export const useBoardReducer: Reducer<SwimlaneProps[], ReducerAction> = (
       const theOtherSwimlanes = state.filter(
         (swimlane) => swimlane.id !== swimlaneId
       );
-
       return sortArrayById([...theOtherSwimlanes, swimlaneToBeUpdated]);
     }
     case ReducerActionType.MOVE_CARD: {
@@ -94,6 +94,15 @@ export const useBoardReducer: Reducer<SwimlaneProps[], ReducerAction> = (
         toSwimlane,
       ]);
     }
+    case ReducerActionType.LOAD_LOCALSTORAGE:
+      const store = localStorage.getItem("state");
+      return store ? JSON.parse(store) : state;
+    case ReducerActionType.UPDATE_LOCALSTORAGE:
+      localStorage.setItem("state", JSON.stringify(state));
+      return state;
+    case ReducerActionType.RESET_BOARD:
+      localStorage.setItem("state", JSON.stringify(initialState));
+      return state;
     default:
       return state;
   }

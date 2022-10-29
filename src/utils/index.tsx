@@ -1,3 +1,5 @@
+import { initialState } from "../store";
+
 export const generateRandomInt = (maxInt = 50) => {
   return Math.ceil(Math.random() * maxInt);
 };
@@ -16,4 +18,11 @@ export const generateRandomContent = (maxRepeat: number) =>
 export const sortArrayById = (arr: any[]) => {
   arr.sort((a, b) => a.id.charCodeAt(0) - b.id.charCodeAt(0));
   return arr;
+};
+
+export const getInitialState = () => {
+  const store = localStorage.getItem("state");
+  if (store) {
+    return JSON.parse(store);
+  } else return initialState;
 };
