@@ -8,7 +8,13 @@
   width: 272px;
 }
 
-.Swimlane-Title {
+.Swimlane-Header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Swimlane-Name {
   padding: 8px;
   margin: 4px;
   font-weight: 700;
@@ -17,7 +23,12 @@
   background: #ebecf0;
 }
 
-.List {
+.Swimlane-Name:hover {
+  background: #ffffff50;
+  cursor: pointer;
+}
+
+.Card-List {
   border-radius: 4px;
   display: flex;
   flex-direction: column;

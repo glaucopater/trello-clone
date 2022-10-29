@@ -9,6 +9,7 @@ At the end I focused on improving performance and UI/UX aspects.
 
 For the state management my choice went on implementing a simple state manager based on React Context (in order to share a store in different part of the application) and a custom hook using useReducer.
 All the logic about dispatching actions (adding, editing, moving, removing cards) are delegated to it.
+The state is persisted in the browser Localstorage.
 
 # UI
 
@@ -17,6 +18,7 @@ Each swimlans can contain different cards.
 I opted for deleting a card instead of Trello's approach where the card are archived.
 No external UI library is used, emojis are used in place of icons.
 Drag and drop between swimlane is possible, this is implemented through the drag API of JavaScript.
+It is possible to reset the board (the default initial state is reloaded)
 
 # Models
 

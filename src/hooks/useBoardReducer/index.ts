@@ -1,5 +1,6 @@
 import { Reducer } from "react";
 import { SwimlaneProps } from "../../components/Swimlane";
+import { initialState } from "../../store";
 import { generateRandomId, sortArrayById } from "../../utils";
 import { ReducerAction, ReducerActionType } from "./actions";
 
@@ -8,17 +9,29 @@ export const useBoardReducer: Reducer<SwimlaneProps[], ReducerAction> = (
   action
 ) => {
   switch (action.type) {
+    case ReducerActionType.CREATE_SWIMLANE:
+      const name = action.payload;
+      const emptySwimlane: SwimlaneProps = {
+        id: generateRandomId(),
+        name: name,
+        cards: [],
+      };
+      return [...state, emptySwimlane];
+    case ReducerActionType.EDIT_SWIMLANE:
+      const swimlaneToBeUpdated = action.payload;
+      return sortArrayById([
+        ...state.filter((swimlane) => swimlane.id !== swimlaneToBeUpdated.id),
+        swimlaneToBeUpdated,
+      ]);
     case ReducerActionType.CREATE_CARD:
       const selectedSwimlaneId = action.payload;
+      const createdCard = { id: generateRandomId(), content: "new card" };
       const selectedSwimlane = state.filter(
         (swimlane) => swimlane.id === selectedSwimlaneId.id
       )[0];
       const updatedSwimlane = {
         ...selectedSwimlane,
-        cards: [
-          ...selectedSwimlane.cards,
-          { id: generateRandomId(), content: "new card" },
-        ],
+        cards: [...selectedSwimlane.cards, createdCard],
       };
       const theOtherSwimlanes = state.filter(
         (swimlane) => swimlane.id !== selectedSwimlane.id
@@ -53,7 +66,6 @@ export const useBoardReducer: Reducer<SwimlaneProps[], ReducerAction> = (
       const theOtherSwimlanes = state.filter(
         (swimlane) => swimlane.id !== swimlaneId
       );
-
       return sortArrayById([...theOtherSwimlanes, swimlaneToBeUpdated]);
     }
     case ReducerActionType.MOVE_CARD: {
@@ -82,6 +94,15 @@ export const useBoardReducer: Reducer<SwimlaneProps[], ReducerAction> = (
         toSwimlane,
       ]);
     }
+    case ReducerActionType.LOAD_LOCALSTORAGE:
+      const store = localStorage.getItem("state");
+      return store ? JSON.parse(store) : state;
+    case ReducerActionType.UPDATE_LOCALSTORAGE:
+      localStorage.setItem("state", JSON.stringify(state));
+      return state;
+    case ReducerActionType.RESET_BOARD:
+      localStorage.setItem("state", JSON.stringify(initialState));
+      return state;
     default:
       return state;
   }

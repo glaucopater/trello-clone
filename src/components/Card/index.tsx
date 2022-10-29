@@ -1,5 +1,4 @@
 import {
-  ChangeEvent,
   DragEvent,
   SetStateAction,
   SyntheticEvent,
@@ -19,8 +18,7 @@ export const getTextArea = (
   content: string | number | readonly string[] | undefined
 ) => {
   const [currentContent, setContent] = useState(content);
-
-  const handleOnChange = (event: any) => {
+  const handleOnChange = (event: { target: { value: SetStateAction<string | number | readonly string[] | undefined>; }; }) => {
     setContent(event.target.value);
   };
 

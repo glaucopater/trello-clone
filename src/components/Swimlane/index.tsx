@@ -1,8 +1,8 @@
 import { Card, CardProps } from "../Card";
 import "./Swimlane.css";
-import { useContext } from "react";
+import { SetStateAction, useContext, useState } from "react";
 import { BoardContext, ContextProps } from "../../contexts/BoardContext";
-import { AddButton } from "../AddButton";
+import { AddCardButton } from "../AddCardButton";
 
 export type SwimlaneProps = {
   id: string;
@@ -13,7 +13,10 @@ export type SwimlaneProps = {
 // each list could have different height, but the width should be dynamic
 export const Swimlane = (props: SwimlaneProps) => {
   const initialStore = useContext(BoardContext);
-  const { addCard, moveCard } = (initialStore as ContextProps) || {};
+  const { editSwimlane, addCard, moveCard } =
+    (initialStore as ContextProps) || {};
+  const [isEditable, setIsEditable] = useState(false);
+  const [currentName, setCurrentName] = useState(props.name);
 
   const handleAddCard = () => {
     addCard(props.id);
@@ -35,6 +38,27 @@ export const Swimlane = (props: SwimlaneProps) => {
     moveCard(id, fromSwimlaneId, props.id);
   };
 
+  const handleEditName = () => {
+    setIsEditable(true);
+  };
+
+  const handlehandleOnChangeName = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setCurrentName(event.target.value);
+  };
+
+  const handleSaveName = () => {
+    editSwimlane({ ...props, name: currentName });
+    setIsEditable(false);
+  };
+
+  const handleOnKeyDown = (event: { key: string }) => {
+    if (event.key === "Enter") {
+      handleSaveName();
+    }
+  };
+
   return (
     <section
       className="Swimlane"
@@ -42,17 +66,33 @@ export const Swimlane = (props: SwimlaneProps) => {
       onDrop={handleOnDrop}
       onDragOver={handleOnDragOver}
     >
-      <span className="Swimlane-Title">
-        {props.name} ({props.cards.length})
-      </span>
-      <ul className="List">
+      <div className="Swimlane-Header">
+        <span
+          className="Swimlane-Name"
+          onClick={handleEditName}
+          onBlur={handleSaveName}
+          onKeyDown={handleOnKeyDown}
+        >
+          {isEditable ? (
+            <input
+              type="text"
+              value={currentName}
+              onChange={handlehandleOnChangeName}
+            />
+          ) : (
+            currentName
+          )}
+        </span>
+        <span>({props.cards.length})</span>
+      </div>
+      <ul className="Card-List">
         {props.cards.map((item, index) => (
           <li key={index}>
             <Card {...item} currentSwimlaneId={props.id} />
           </li>
         ))}
       </ul>
-      <AddButton onClickHandler={handleAddCard} id={props.id} />
+      <AddCardButton onClickHandler={handleAddCard} id={props.id} />
     </section>
   );
 };

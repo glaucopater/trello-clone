@@ -2,11 +2,26 @@ import { CardProps } from "../../components/Card";
 import { SwimlaneProps } from "../../components/Swimlane";
 
 export enum ReducerActionType {
+  CREATE_SWIMLANE,
+  EDIT_SWIMLANE,
   CREATE_CARD,
   DELETE_CARD,
   EDIT_CARD,
   MOVE_CARD,
+  LOAD_LOCALSTORAGE,
+  UPDATE_LOCALSTORAGE,
+  RESET_BOARD,
 }
+
+export type CreateSwimlaneAction = {
+  type: ReducerActionType.CREATE_SWIMLANE;
+  payload: SwimlaneProps["name"];
+};
+
+export type EditSwimlaneAction = {
+  type: ReducerActionType.EDIT_SWIMLANE;
+  payload: SwimlaneProps;
+};
 
 export type CreateCardAction = {
   type: ReducerActionType.CREATE_CARD;
@@ -28,8 +43,26 @@ export type DeleteCardAction = {
   payload: SwimlaneProps;
 };
 
+export type LoadLocalStorage = {
+  type: ReducerActionType.LOAD_LOCALSTORAGE;
+};
+
+export type UpdateLocalStorage = {
+  type: ReducerActionType.UPDATE_LOCALSTORAGE;
+  payload: SwimlaneProps[];
+};
+
+export type ResetBoard = {
+  type: ReducerActionType.RESET_BOARD;
+};
+
 export type ReducerAction =
+  | CreateSwimlaneAction
+  | EditSwimlaneAction
   | CreateCardAction
   | DeleteCardAction
   | EditCardAction
-  | MoveCardAction;
+  | MoveCardAction
+  | LoadLocalStorage
+  | UpdateLocalStorage
+  | ResetBoard;
