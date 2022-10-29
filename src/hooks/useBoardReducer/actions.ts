@@ -1,3 +1,4 @@
+import { CardProps } from "../../components/Card";
 import { SwimlaneProps } from "../../components/Swimlane";
 
 export enum ReducerActionType {
@@ -17,12 +18,18 @@ export type MoveCardAction = {
   payload: { id: string; fromSwimlaneId: string; toSwimlaneId: string };
 };
 
-export type DeleteOrEditCardAction = {
-  type: ReducerActionType.DELETE_CARD | ReducerActionType.EDIT_CARD;
+export type EditCardAction = {
+  type: ReducerActionType.EDIT_CARD;
+  payload: { card: CardProps; swimlaneId: string };
+};
+
+export type DeleteCardAction = {
+  type: ReducerActionType.DELETE_CARD;
   payload: SwimlaneProps;
 };
 
 export type ReducerAction =
   | CreateCardAction
-  | DeleteOrEditCardAction
+  | DeleteCardAction
+  | EditCardAction
   | MoveCardAction;

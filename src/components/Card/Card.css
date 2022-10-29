@@ -11,6 +11,6 @@
 
 .Card:hover {
   background: #ffffff50;
-  cursor: pointer;
+  cursor: move;
   transition: ease-in-out 300ms;
 }

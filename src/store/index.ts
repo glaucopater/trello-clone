@@ -8,17 +8,17 @@ export const initialState: SwimlaneProps[] = [
       {
         id: "1.1",
         content: "lorem ipsum 1.1",
-        currentSwimlane: "1"
+        currentSwimlaneId: "1"
       },
       {
         id: "1.2",
         content: "lorem ipsum 2.1",
-        currentSwimlane: "1"
+        currentSwimlaneId: "1"
       },
       {
         id: "1.3",
         content: "lorem ipsum 3.1",
-        currentSwimlane: "1"
+        currentSwimlaneId: "1"
       },
     ],
   },
@@ -29,7 +29,7 @@ export const initialState: SwimlaneProps[] = [
       {
         id: "1",
         content: "lorem ipsum 2.1",
-        currentSwimlane: "2"
+        currentSwimlaneId: "2"
       },
     ],
   },
@@ -40,7 +40,7 @@ export const initialState: SwimlaneProps[] = [
       {
         id: "1",
         content: "lorem ipsum 2.2",
-        currentSwimlane: "3"
+        currentSwimlaneId: "3"
       },
     ],
   },

@@ -48,7 +48,7 @@ export const Swimlane = (props: SwimlaneProps) => {
       <ul className="List">
         {props.cards.map((item, index) => (
           <li key={index}>
-            <Card {...item} currentSwimlane={props.id} />
+            <Card {...item} currentSwimlaneId={props.id} />
           </li>
         ))}
       </ul>
