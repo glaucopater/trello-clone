@@ -11,15 +11,16 @@ export type SwimlaneProps = {
 };
 
 // each list could have different height, but the width should be dynamic
-export const Swimlane = (props: SwimlaneProps) => {
+export const Swimlane = (swimlaneProps: SwimlaneProps) => {
   const initialStore = useContext(BoardContext);
   const { editSwimlane, addCard, moveCard } =
     (initialStore as ContextProps) || {};
+  const { id, name, cards } = swimlaneProps;
   const [isEditable, setIsEditable] = useState(false);
-  const [currentName, setCurrentName] = useState(props.name);
+  const [currentName, setCurrentName] = useState(name);
 
   const handleAddCard = () => {
-    addCard(props.id);
+    addCard(id);
   };
 
   const handleOnDragOver = (event: {
@@ -33,9 +34,9 @@ export const Swimlane = (props: SwimlaneProps) => {
   const handleOnDrop = (event: {
     dataTransfer: { getData: (arg0: string) => any };
   }) => {
-    const id = event.dataTransfer.getData("id");
+    const cardId = event.dataTransfer.getData("id");
     const fromSwimlaneId = event.dataTransfer.getData("swimlane");
-    moveCard(id, fromSwimlaneId, props.id);
+    moveCard(cardId, fromSwimlaneId, id);
   };
 
   const handleEditName = () => {
@@ -49,7 +50,7 @@ export const Swimlane = (props: SwimlaneProps) => {
   };
 
   const handleSaveName = () => {
-    editSwimlane({ ...props, name: currentName });
+    editSwimlane({ ...swimlaneProps, name: currentName });
     setIsEditable(false);
   };
 
@@ -62,7 +63,7 @@ export const Swimlane = (props: SwimlaneProps) => {
   return (
     <section
       className="Swimlane"
-      id={"swimlane-" + props.id}
+      id={`swimlane-${id}`}
       onDrop={handleOnDrop}
       onDragOver={handleOnDragOver}
     >
@@ -83,16 +84,16 @@ export const Swimlane = (props: SwimlaneProps) => {
             currentName
           )}
         </span>
-        <span>({props.cards.length})</span>
+        <span>({cards.length})</span>
       </div>
       <ul className="Card-List">
-        {props.cards.map((item, index) => (
+        {cards.map((item, index) => (
           <li key={index}>
-            <Card {...item} currentSwimlaneId={props.id} />
+            <Card {...item} currentSwimlaneId={id} />
           </li>
         ))}
       </ul>
-      <AddCardButton onClickHandler={handleAddCard} id={props.id} />
+      <AddCardButton onClickHandler={handleAddCard} id={id} />
     </section>
   );
 };

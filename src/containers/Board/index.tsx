@@ -6,7 +6,7 @@ import "./Board.css";
 
 export const Board = () => {
   const initialStore = useContext(BoardContext);
-  const { swimlaneList: state, resetBoard } = (initialStore as ContextProps) || {};
+  const { swimlaneList: state } = (initialStore as ContextProps) || {};
   
 
   return (
