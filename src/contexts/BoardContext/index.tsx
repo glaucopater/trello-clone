@@ -8,6 +8,7 @@ import { initialState } from "../../store";
 export type ContextProps = {
   swimlaneList: SwimlaneProps[];
   addSwimlane: (name: string) => void;
+  editSwimlane: (swimlane: SwimlaneProps) => void;
   addCard: (swimlaneId: string) => void;
   deleteCard: (cardId: string) => void;
   editCard: (card: CardProps, swimlaneId: string) => void;
@@ -29,6 +30,12 @@ export const BoardProvider = ({ children }: { children: React.ReactNode }) => {
       dispatch({
         type: ReducerActionType.CREATE_SWIMLANE,
         payload: name,
+      });
+    },
+    editSwimlane: (swimlane: SwimlaneProps) => {
+      dispatch({
+        type: ReducerActionType.EDIT_SWIMLANE,
+        payload: swimlane,
       });
     },
     addCard: (swimlaneId: string) => {

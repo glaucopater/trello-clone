@@ -7,7 +7,6 @@ const defaultContent = "Enter Title";
 export const AddSwimlaneButton = () => {
   const initialStore = useContext(BoardContext);
   const { addSwimlane } = (initialStore as ContextProps) || {};
-
   const [isEditable, setIsEditable] = useState(false);
   const [currentContent, setCurrentContent] = useState(defaultContent);
 
@@ -33,9 +32,9 @@ export const AddSwimlaneButton = () => {
   };
 
   return (
-    <div>
+    <section className="Swimlane">
       {isEditable ? (
-        <section className="Swimlane">
+        <>
           <input type="text" value={currentContent} onChange={handleOnChange} />
           <div>
             <button className="AddSwimlaneButton" onClick={handleOnSave}>
@@ -45,12 +44,12 @@ export const AddSwimlaneButton = () => {
               Cancel
             </button>
           </div>
-        </section>
+        </>
       ) : (
         <button className="AddSwimlaneButton" onClick={handleOnAddSwimlane}>
           Add Swimlane
         </button>
       )}
-    </div>
+    </section>
   );
 };
