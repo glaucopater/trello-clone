@@ -1,21 +1,24 @@
-import { SectionProps } from "../components/Section";
+import { SwimlaneProps } from "../components/Swimlane";
 
-export const initialState: SectionProps[] = [
+export const initialState: SwimlaneProps[] = [
   {
     id: "1",
     name: "To Do",
     cards: [
       {
         id: "1.1",
-        content: "lorem ipsum",
+        content: "lorem ipsum 1.1",
+        currentSwimlaneId: "1"
       },
       {
         id: "1.2",
-        content: "lorem ipsum",
+        content: "lorem ipsum 2.1",
+        currentSwimlaneId: "1"
       },
       {
         id: "1.3",
-        content: "lorem ipsum",
+        content: "lorem ipsum 3.1",
+        currentSwimlaneId: "1"
       },
     ],
   },
@@ -24,8 +27,9 @@ export const initialState: SectionProps[] = [
     name: "In progress",
     cards: [
       {
-        id: "1",
-        content: "lorem ipsum",
+        id: "2.1",
+        content: "lorem ipsum 2.1",
+        currentSwimlaneId: "2"
       },
     ],
   },
@@ -35,7 +39,8 @@ export const initialState: SectionProps[] = [
     cards: [
       {
         id: "1",
-        content: "lorem ipsum",
+        content: "lorem ipsum 2.2",
+        currentSwimlaneId: "3"
       },
     ],
   },

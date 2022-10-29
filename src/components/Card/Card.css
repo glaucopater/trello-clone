@@ -5,11 +5,12 @@
   border-radius: 3px;
   background: #ffffff;
   max-height: 300px;
-  overflow-y: scroll;
+  overflow-y: auto;
+  transition: ease-in-out 300ms;
 }
 
 .Card:hover {
   background: #ffffff50;
-  cursor: pointer;
+  cursor: move;
   transition: ease-in-out 300ms;
 }

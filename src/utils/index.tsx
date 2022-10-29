@@ -12,3 +12,8 @@ export const generateRandomId = (): string => {
 
 export const generateRandomContent = (maxRepeat: number) =>
   "This is the card content. ".repeat(generateRandomInt(maxRepeat));
+
+export const sortArrayById = (arr: any[]) => {
+  arr.sort((a, b) => a.id.charCodeAt(0) - b.id.charCodeAt(0));
+  return arr;
+};

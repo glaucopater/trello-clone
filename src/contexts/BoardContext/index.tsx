@@ -1,13 +1,20 @@
 import React, { createContext, useReducer } from "react";
-import { SectionProps } from "../../components/Section";
+import { CardProps } from "../../components/Card";
+import { SwimlaneProps } from "../../components/Swimlane";
 import { useBoardReducer } from "../../hooks/useBoardReducer";
-import { ReducerActionType } from "../../hooks/useBoardReducer/types";
+import { ReducerActionType } from "../../hooks/useBoardReducer/actions";
 import { initialState } from "../../store";
 
 export type ContextProps = {
-  sectionsList: SectionProps[];
-  addCard: (sectionId: string) => void;
+  swimlaneList: SwimlaneProps[];
+  addCard: (swimlaneId: string) => void;
   deleteCard: (cardId: string) => void;
+  editCard: (card: CardProps, swimlaneId: string) => void;
+  moveCard: (
+    cardId: string,
+    fromSwimlaneId: string,
+    toSwimlaneId: string
+  ) => void;
 };
 
 export const BoardContext = createContext<ContextProps | undefined>(undefined);
@@ -16,17 +23,29 @@ export const BoardProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(useBoardReducer, initialState);
 
   const value = {
-    sectionsList: state,
-    addCard: (sectionId: string) => {
+    swimlaneList: state,
+    addCard: (swimlaneId: string) => {
       dispatch({
         type: ReducerActionType.CREATE_CARD,
-        payload: { id: sectionId, name: "TS", cards: [] },
+        payload: { id: swimlaneId, name: "New!", cards: [] },
       });
     },
     deleteCard: (id: string) => {
       dispatch({
         type: ReducerActionType.DELETE_CARD,
-        payload: { id, name: "TS", cards: [] },
+        payload: { id, name: "New", cards: [] },
+      });
+    },
+    editCard: (card: CardProps, swimlaneId: string) => {
+      dispatch({
+        type: ReducerActionType.EDIT_CARD,
+        payload: { card, swimlaneId },
+      });
+    },
+    moveCard: (id: string, fromSwimlaneId: string, toSwimlaneId: string) => {
+      dispatch({
+        type: ReducerActionType.MOVE_CARD,
+        payload: { id, fromSwimlaneId, toSwimlaneId },
       });
     },
   };
