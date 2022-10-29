@@ -1,4 +1,4 @@
-.AddButton {
+.ButtonBasic {
   border: 1px solid #ccc;
   border-radius: 3px;
   color: #111;
@@ -11,15 +11,15 @@
   -webkit-user-select: none;
   user-select: none;
   transition: ease-in-out 300ms;
+  max-width: 200px;
 }
 
-.AddButton:hover {
+.ButtonBasic:hover {
   cursor: pointer;
   transition: ease-in-out 300ms;
   background: #effeec;
 }
 
-.AddButton::after {
-  content: "➕";
+.ButtonBasic::after { 
   padding: 0 8px;
 }

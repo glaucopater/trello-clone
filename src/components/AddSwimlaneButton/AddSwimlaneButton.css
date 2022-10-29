@@ -1,9 +1,10 @@
 .AddSwimlaneButton {
+  border: 1px solid #ccc;
   border-radius: 3px;
   color: #111;
   display: block;
   flex: 1 0 auto;
-  margin: 2px 0 8px 8px;
+  margin: 4px;
   padding: 4px 8px;
   position: relative;
   text-decoration: none;
@@ -19,6 +20,6 @@
 }
 
 .AddSwimlaneButton::after {
-  content: "+";
+  content: "➕";
   padding: 0 8px;
 }

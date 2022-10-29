@@ -57,7 +57,7 @@ export const Card = (cardProps: CardProps) => {
   const editCardMode = (
     <>
       <textarea value={currentContent} onChange={handleOnChangeContent} />
-      <div>
+      <div className="Card-Actions-Edit">
         <button onClick={handleOnSaveContent} title="Save Card">
           <span role="img" aria-labelledby="Save Card">
             💾
@@ -74,8 +74,8 @@ export const Card = (cardProps: CardProps) => {
 
   const viewCardMode = (
     <>
-      {content}
-      <div>
+      <div className="Card-Content">{content}</div>
+      <div className="Card-Actions">
         <button onClick={handleEditCard} title="edit card">
           <span role="img" aria-labelledby="Edit Card">
             ✏️
