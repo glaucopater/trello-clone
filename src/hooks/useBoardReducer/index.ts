@@ -8,17 +8,29 @@ export const useBoardReducer: Reducer<SwimlaneProps[], ReducerAction> = (
   action
 ) => {
   switch (action.type) {
+    case ReducerActionType.CREATE_SWIMLANE:
+      const name = action.payload;
+
+      const emptySwimlane: SwimlaneProps = {
+        id: generateRandomId(),
+        name: name,
+        cards: [],
+      };
+      return [...state, emptySwimlane];
+
+    case ReducerActionType.EDIT_SWIMLANE:
+      const swimlaneToBeUpdated = action.payload;
+
+      return [...state, swimlaneToBeUpdated];
     case ReducerActionType.CREATE_CARD:
       const selectedSwimlaneId = action.payload;
+      const createdCard = { id: generateRandomId(), content: "new card" };
       const selectedSwimlane = state.filter(
         (swimlane) => swimlane.id === selectedSwimlaneId.id
       )[0];
       const updatedSwimlane = {
         ...selectedSwimlane,
-        cards: [
-          ...selectedSwimlane.cards,
-          { id: generateRandomId(), content: "new card" },
-        ],
+        cards: [...selectedSwimlane.cards, createdCard],
       };
       const theOtherSwimlanes = state.filter(
         (swimlane) => swimlane.id !== selectedSwimlane.id

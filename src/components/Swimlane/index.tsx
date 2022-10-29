@@ -2,7 +2,7 @@ import { Card, CardProps } from "../Card";
 import "./Swimlane.css";
 import { useContext } from "react";
 import { BoardContext, ContextProps } from "../../contexts/BoardContext";
-import { AddButton } from "../AddButton";
+import { AddCardButton } from "../AddCardButton";
 
 export type SwimlaneProps = {
   id: string;
@@ -52,7 +52,7 @@ export const Swimlane = (props: SwimlaneProps) => {
           </li>
         ))}
       </ul>
-      <AddButton onClickHandler={handleAddCard} id={props.id} />
+      <AddCardButton onClickHandler={handleAddCard} id={props.id} />
     </section>
   );
 };
