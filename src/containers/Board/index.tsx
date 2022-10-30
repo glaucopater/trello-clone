@@ -7,7 +7,6 @@ import "./Board.css";
 export const Board = () => {
   const initialStore = useContext(BoardContext);
   const { swimlaneList: state } = (initialStore as ContextProps) || {};
-  
 
   return (
     <div className="Board">

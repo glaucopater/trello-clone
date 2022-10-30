@@ -1,7 +1,4 @@
-import {
-  render,
-  fireEvent,
-} from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import { BoardContext, ContextProps } from "../../contexts/BoardContext";
 import { Swimlane } from "./";
 import { getInitialState } from "../../utils";

@@ -20,6 +20,6 @@
   background: #effeec;
 }
 
-.ButtonBasic::after { 
+.ButtonBasic::after {
   padding: 0 8px;
 }
