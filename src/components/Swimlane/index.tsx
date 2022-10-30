@@ -35,7 +35,7 @@ export const Swimlane = (swimlaneProps: SwimlaneProps) => {
     const dragEvent = event as React.DragEvent;
     const cardId = dragEvent.dataTransfer.getData("id");
     const fromSwimlaneId = dragEvent.dataTransfer.getData("swimlane");
-    moveCard(cardId, fromSwimlaneId, id);
+    if (fromSwimlaneId !== id) moveCard(cardId, fromSwimlaneId, id);
   };
 
   const handleEditName = () => {
