@@ -1,7 +1,7 @@
 import { Reducer } from "react";
 import { SwimlaneProps } from "../../components/Swimlane";
 import { initialState } from "../../store";
-import { generateRandomId, sortArrayById } from "../../utils";
+import { generateRandomId, getInitialState, sortArrayById } from "../../utils";
 import { ReducerAction, ReducerActionType } from "./actions";
 
 export const useBoardReducer: Reducer<SwimlaneProps[], ReducerAction> = (
@@ -27,7 +27,7 @@ export const useBoardReducer: Reducer<SwimlaneProps[], ReducerAction> = (
     case ReducerActionType.CREATE_CARD:
       const selectedSwimlaneId = action.payload;
       const newId = generateRandomId();
-      const createdCard = { id: newId, content: "new card " + newId };
+      const createdCard = { id: newId, content: "Card " + newId };
       const selectedSwimlane = state.filter(
         (swimlane) => swimlane.id === selectedSwimlaneId.id
       )[0];
@@ -97,7 +97,7 @@ export const useBoardReducer: Reducer<SwimlaneProps[], ReducerAction> = (
       ]);
     }
     case ReducerActionType.LOAD_LOCALSTORAGE:
-      const store = localStorage.getItem("state");
+      const store = getInitialState();
       return store ? JSON.parse(store) : state;
     case ReducerActionType.UPDATE_LOCALSTORAGE:
       localStorage.setItem("state", JSON.stringify(state));
