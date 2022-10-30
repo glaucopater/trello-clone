@@ -11,7 +11,7 @@
   -webkit-user-select: none;
   user-select: none;
   transition: ease-in-out 300ms;
-  max-width: 200px;
+  max-width: 150px;
 }
 
 .ButtonBasic:hover {

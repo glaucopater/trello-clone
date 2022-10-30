@@ -23,7 +23,7 @@ export const Card = (cardProps: CardProps) => {
   const { id, content, currentSwimlaneId } = cardProps;
   const [currentContent, setCurrentContent] = useState(content);
 
-  const handleDeleteCard = (id: string) => (_e: SyntheticEvent) => {
+  const handleDeleteCard = () => {
     deleteCard(id);
   };
 
@@ -82,7 +82,7 @@ export const Card = (cardProps: CardProps) => {
             ✏️
           </span>
         </button>
-        <button onClick={(e) => handleDeleteCard(id)(e)} title="Delete Card">
+        <button onClick={handleDeleteCard} title="Delete Card">
           <span role="img" aria-labelledby="Delete Card">
             🗑️
           </span>

@@ -7,6 +7,23 @@ import crypto from "crypto";
 
 Object.defineProperty(global.self, "crypto", {
   value: {
-    getRandomValues: (arr: string | any[]) => crypto.randomBytes(arr.length),
+    getRandomValues: (arr: any) => crypto.randomFillSync(arr),
   },
 });
+
+export const mockLocalStorage = () => {
+  const setItemMock = jest.fn();
+  const getItemMock = jest.fn();
+
+  beforeEach(() => {
+    Storage.prototype.setItem = setItemMock;
+    Storage.prototype.getItem = getItemMock;
+  });
+
+  afterEach(() => {
+    setItemMock.mockRestore();
+    getItemMock.mockRestore();
+  });
+
+  return { setItemMock, getItemMock };
+};
