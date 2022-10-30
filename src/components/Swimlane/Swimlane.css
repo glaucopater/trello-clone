@@ -10,12 +10,12 @@
 
 .Swimlane-Header {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
 }
 
 .Swimlane-Name {
-  padding: 8px;
+  padding: 4px;
   font-weight: 700;
   font-size: smaller;
   position: sticky;
@@ -26,6 +26,10 @@
 .Swimlane-Name:hover {
   background: #ffffff50;
   cursor: pointer;
+}
+
+.Swimlane-Input {
+  width: 150px;
 }
 
 .Card-List {

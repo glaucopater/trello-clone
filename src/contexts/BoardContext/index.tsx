@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from "react";
 import { CardProps } from "../../components/Card";
 import { SwimlaneProps } from "../../components/Swimlane";
 import { useBoardReducer } from "../../hooks/useBoardReducer";
-import { ReducerActionType } from "../../hooks/useBoardReducer/actions"; 
+import { ReducerActionType } from "../../hooks/useBoardReducer/actions";
 import { getInitialState } from "../../utils";
 
 export type ContextProps = {

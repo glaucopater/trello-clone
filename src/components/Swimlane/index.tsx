@@ -75,6 +75,7 @@ export const Swimlane = (swimlaneProps: SwimlaneProps) => {
         >
           {isEditable ? (
             <input
+              className="Swimlane-Input"
               type="text"
               value={currentName}
               onChange={handlehandleOnChangeName}

@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-After some consideration on the UI I implemented the skeleton of the application, starting from the ui 
+After some consideration on the UI I implemented the skeleton of the application, starting from the ui
 components, then the state manager, then adding all the required actions for managing the board.
 At the end I focused on improving performance and UI/UX aspects.
 
@@ -20,7 +20,7 @@ The state is persisted in the browser Localstorage.
 
 - No external UI library is used, emojis are used in place of icons.
 - Drag and drop between swimlane is possible, this is implemented through the drag API of JavaScript.
-- The header of each swimlane/column shows the  number of existing cards.
+- The header of each swimlane/column shows the number of existing cards.
 - I opted for deleting a card instead of Trello's approach where the card are archived.
 - It is possible to reset the board (the default initial state is reloaded).
 
@@ -48,9 +48,9 @@ Reduce rerendering
 # Possible Features and Extensions 💅
 
 - Drag and drop of Swimlanes
-- Extending the models with other property (to simplify the implementation the current logic considers only the id, but could make 
-sense to have also a priority/sorting index for card and swimlane)
-- Showing the new cards added (checkinghe the difference between original state and current one) in the header like 
+- Extending the models with other property (to simplify the implementation the current logic considers only the id, but could make
+  sense to have also a priority/sorting index for card and swimlane)
+- Showing the new cards added (checkinghe the difference between original state and current one) in the header like
 - Minimal Modal component for editing a card, considering also the possibility to use rich text content.
 - Multi Board support
 

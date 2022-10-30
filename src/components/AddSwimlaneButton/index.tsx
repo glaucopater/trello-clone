@@ -36,7 +36,12 @@ export const AddSwimlaneButton = () => {
     <section className="Swimlane">
       {isEditable ? (
         <>
-          <input className="AddSwimlaneButton-Input" type="text" value={currentContent} onChange={handleOnChange} />
+          <input
+            className="AddSwimlaneButton-Input"
+            type="text"
+            value={currentContent}
+            onChange={handleOnChange}
+          />
           <div className="AddSwimlaneButton-Actions">
             <ButtonBasic onClickHandler={handleOnSave}>Save </ButtonBasic>
             <ButtonBasic onClickHandler={handleOnCancel}>Cancel </ButtonBasic>

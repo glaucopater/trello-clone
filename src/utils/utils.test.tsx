@@ -11,6 +11,6 @@ describe("utils", () => {
     const result = sortArrayById(randomOrderState).map(
       (swimlane) => swimlane.id
     );
-    expect(result).toMatchObject(["1","2","3"]);
+    expect(result).toMatchObject(["1", "2", "3"]);
   });
 });
