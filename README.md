@@ -24,12 +24,12 @@ The state is persisted in the browser Localstorage.
 - I opted for deleting a card instead of Trello's approach where the card are archived.
 - It is possible to reset the board (the default initial state is reloaded).
 
-# Models
+# Models 📐
 
-The application considers three main models: board, swimlane, card.
+The application considers three main models: Board, Swimlane, Card.
 
-- A Board is a container of swimlanes
-- A Swimlane is a container of cards
+- A Board is a container of Swimlanes
+- A Swimlane is a container of Cards
 - A Card contains textual content
 
 # Tests 🧪
