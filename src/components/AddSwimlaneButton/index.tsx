@@ -1,8 +1,9 @@
 import { SetStateAction, useContext, useState } from "react";
 import { BoardContext, ContextProps } from "../../contexts/BoardContext";
+import { ButtonBasic } from "../ButtonBasic";
 import "./AddSwimlaneButton.css";
 
-const defaultContent = "Enter Title";
+const defaultContent = "Enter Name";
 
 export const AddSwimlaneButton = () => {
   const initialStore = useContext(BoardContext);
@@ -37,12 +38,8 @@ export const AddSwimlaneButton = () => {
         <>
           <input type="text" value={currentContent} onChange={handleOnChange} />
           <div>
-            <button className="AddSwimlaneButton" onClick={handleOnSave}>
-              Save
-            </button>
-            <button className="AddSwimlaneButton" onClick={handleOnCancel}>
-              Cancel
-            </button>
+            <ButtonBasic onClickHandler={handleOnSave}>Save </ButtonBasic>
+            <ButtonBasic onClickHandler={handleOnCancel}>Cancel </ButtonBasic>
           </div>
         </>
       ) : (

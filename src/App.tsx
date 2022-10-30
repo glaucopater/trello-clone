@@ -5,7 +5,7 @@ import { BoardProvider } from "./contexts/BoardContext";
 
 const App = () => {
   return (
-    <div className="app">
+    <div className="App">
       <BoardProvider>
         <Header />
         <Board />

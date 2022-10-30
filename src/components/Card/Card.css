@@ -27,11 +27,13 @@
   flex-direction: column;
   padding: 4px;
   opacity: 0.3;
+  transition: ease-in-out 300ms;
 }
 
 .Card-Actions:hover,
 .Card-Actions-Edit {
   opacity: 1;
+  transition: ease-in-out 300ms;
 }
 
 .Card-Actions > button,
