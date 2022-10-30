@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AddSwimlaneButton } from "../../components/AddSwimlaneButton";
-import { Swimlane } from "../../components/Swimlane";
+import { MemoizedSwimlane as Swimlane } from "../../components/Swimlane";
 import { BoardContext, ContextProps } from "../../contexts/BoardContext";
 import "./Board.css";
 
