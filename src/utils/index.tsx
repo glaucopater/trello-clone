@@ -16,7 +16,11 @@ export const generateRandomContent = (maxRepeat: number) =>
   "This is the card content. ".repeat(generateRandomInt(maxRepeat));
 
 export const sortArrayById = (arr: any[]) => {
-  arr.sort((a, b) => a.id.charCodeAt(0) - b.id.charCodeAt(0));
+  return sortArrayByProperty(arr, "id");
+};
+
+export const sortArrayByProperty = (arr: any[], property: string) => {
+  arr.sort((a, b) => a[property].charCodeAt(0) - b[property].charCodeAt(0));
   return arr;
 };
 
