@@ -26,7 +26,7 @@ The state is persisted in the browser Localstorage.
 
 # Models
 
-Each component model: swimlane, card and board have common like unique id, name, content.
+The application considers three main models: board, swimlane, card.
 
 - A Board is a container of swimlanes
 - A Swimlane is a container of cards
@@ -38,25 +38,21 @@ I focused only on the business logic of the application and not on the rendering
 
 # Ship to prod 🚢
 
-Thanks to husky each commit and push perform unit tests, eslint, prettify the code.
+Thanks to husky each commit /push perform unit tests, eslint, prettify the code.
 Then deploy it on netlify (demo).
 
 # Performance ⚡
 
 Reduce rerendering
 
-# Features 💅
+# Possible Features and Extensions 💅
 
-- Showing the new cards added (check diff between original state and current one) in the header (similarly to the notification in Trello)
-- Counter on columns, if there are more then 7 items is difficult to count them.
-- Minimal Modal component for editing
-- Delete or archive? For the moment I opted for deleting a card
-
-# Todo
-
-- Improve tests
-- Bug fixing
-
+- Drag and drop of Swimlanes
+- Extending the models with other property (to simplify the implementation the current logic considers only the id, but could make 
+sense to have also a priority/sorting index for card and swimlane)
+- Showing the new cards added (checkinghe the difference between original state and current one) in the header like 
+- Minimal Modal component for editing a card, considering also the possibility to use rich text content.
+- Multi Board support
 
 ## Available Scripts
 
