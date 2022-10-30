@@ -97,7 +97,7 @@ export const useBoardReducer: Reducer<SwimlaneProps[], ReducerAction> = (
       ]);
     }
     case ReducerActionType.LOAD_LOCALSTORAGE:
-      const store = getInitialState();
+      const store = localStorage.getItem("state");
       return store ? JSON.parse(store) : state;
     case ReducerActionType.UPDATE_LOCALSTORAGE:
       localStorage.setItem("state", JSON.stringify(state));
