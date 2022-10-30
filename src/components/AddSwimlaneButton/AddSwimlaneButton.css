@@ -23,3 +23,12 @@
   content: "➕";
   padding: 0 8px;
 }
+
+.AddSwimlaneButton-Input {
+  margin: 2px;
+}
+
+
+.AddSwimlaneButton-Actions {
+  display: flex;
+}

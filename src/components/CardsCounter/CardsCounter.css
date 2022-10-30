@@ -1,0 +1,11 @@
+.CardsCounter {
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  color: #111;
+  background: white;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}

@@ -1,3 +1,4 @@
+import React from "react";
 import {
   DragEvent,
   SetStateAction,
@@ -76,7 +77,7 @@ export const Card = (cardProps: CardProps) => {
     <>
       <div className="Card-Content">{content}</div>
       <div className="Card-Actions">
-        <button onClick={handleEditCard} title="edit card">
+        <button onClick={handleEditCard} title="Edit Card">
           <span role="img" aria-labelledby="Edit Card">
             ✏️
           </span>
@@ -102,3 +103,5 @@ export const Card = (cardProps: CardProps) => {
     </article>
   );
 };
+
+export const MemoizedCard = React.memo(Card);

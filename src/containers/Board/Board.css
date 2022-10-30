@@ -1,8 +1,8 @@
 .Board {
-  margin: 8px;
+  margin: 4px 0;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   height: calc(100vh - 100px);
-  background: darkblue;
+  background: rgba(0, 0, 139, 0.8);
 }

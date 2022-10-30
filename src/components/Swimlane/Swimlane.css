@@ -10,13 +10,12 @@
 
 .Swimlane-Header {
   display: flex;
-  flex-direction: row;
-  align-items: center; 
+  justify-content: space-between; 
+  align-items: center;
 }
 
 .Swimlane-Name {
   padding: 8px;
-  margin: 4px;
   font-weight: 700;
   font-size: smaller;
   position: sticky;

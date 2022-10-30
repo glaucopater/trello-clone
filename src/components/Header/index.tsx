@@ -20,7 +20,7 @@ export const Header = () => {
 
   return (
     <header className="Header">
-      <h1>
+      <h1 className="HeaderTitle">
         {packageJSON.title} <TitleImage />
       </h1>
       <ButtonBasic onClickHandler={handleOnResetBoard}>Reset Board</ButtonBasic>

@@ -1,8 +1,9 @@
-import { Card, CardProps } from "../Card";
+import { Card, CardProps, MemoizedCard } from "../Card";
 import "./Swimlane.css";
 import { SetStateAction, useContext, useState } from "react";
 import { BoardContext, ContextProps } from "../../contexts/BoardContext";
 import { AddCardButton } from "../AddCardButton";
+import { CardsCounter } from "../CardsCounter";
 
 export type SwimlaneProps = {
   id: string;
@@ -84,12 +85,12 @@ export const Swimlane = (swimlaneProps: SwimlaneProps) => {
             currentName
           )}
         </span>
-        <span>({cards.length})</span>
+        <CardsCounter count={cards.length} />
       </div>
       <ul className="Card-List">
         {cards.map((item, index) => (
           <li key={index}>
-            <Card {...item} currentSwimlaneId={id} />
+            <MemoizedCard {...item} currentSwimlaneId={id} />
           </li>
         ))}
       </ul>
