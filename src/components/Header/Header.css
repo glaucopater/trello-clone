@@ -1,5 +1,4 @@
 .Header {
-  margin: 8px;
   padding: 8px;
   background: darkblue;
   color: #fff;
@@ -7,6 +6,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  height: 50px;
 }
 
 .HeaderTitle {

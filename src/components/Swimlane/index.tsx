@@ -1,4 +1,4 @@
-import { Card, CardProps } from "../Card";
+import { Card, CardProps, MemoizedCard } from "../Card";
 import "./Swimlane.css";
 import { SetStateAction, useContext, useState } from "react";
 import { BoardContext, ContextProps } from "../../contexts/BoardContext";
@@ -90,7 +90,7 @@ export const Swimlane = (swimlaneProps: SwimlaneProps) => {
       <ul className="Card-List">
         {cards.map((item, index) => (
           <li key={index}>
-            <Card {...item} currentSwimlaneId={id} />
+            <MemoizedCard {...item} currentSwimlaneId={id} />
           </li>
         ))}
       </ul>

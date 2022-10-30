@@ -3,7 +3,7 @@ import { BoardContext, ContextProps } from "../../contexts/BoardContext";
 import { ButtonBasic } from "../ButtonBasic";
 import "./AddSwimlaneButton.css";
 
-const defaultContent = "Enter Name";
+const defaultContent = "Add Title";
 
 export const AddSwimlaneButton = () => {
   const initialStore = useContext(BoardContext);
@@ -36,8 +36,8 @@ export const AddSwimlaneButton = () => {
     <section className="Swimlane">
       {isEditable ? (
         <>
-          <input type="text" value={currentContent} onChange={handleOnChange} />
-          <div>
+          <input className="AddSwimlaneButton-Input" type="text" value={currentContent} onChange={handleOnChange} />
+          <div className="AddSwimlaneButton-Actions">
             <ButtonBasic onClickHandler={handleOnSave}>Save </ButtonBasic>
             <ButtonBasic onClickHandler={handleOnCancel}>Cancel </ButtonBasic>
           </div>

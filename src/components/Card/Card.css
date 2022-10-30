@@ -1,5 +1,5 @@
 .Card {
-  margin: 4px;
+  margin: 2px;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 3px;
@@ -26,17 +26,24 @@
   display: flex;
   flex-direction: column;
   padding: 4px;
-  opacity: 0.3;
   transition: ease-in-out 300ms;
 }
 
-.Card-Actions:hover,
-.Card-Actions-Edit {
-  opacity: 1;
+.Card-Actions > button :hover {
   transition: ease-in-out 300ms;
 }
 
 .Card-Actions > button,
 .Card-Actions-Edit > button {
+  border: none;
+  background: none;
+  opacity: 0.3;
+  transition: ease-in-out 300ms;
+}
+
+.Card-Actions > button:hover,
+.Card-Actions-Edit > button:hover {
   cursor: pointer;
+  opacity: 0.9;
+  transition: ease-in-out 300ms;
 }
