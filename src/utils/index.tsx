@@ -1,12 +1,11 @@
 import { initialState } from "../store";
 
 export const generateRandomInt = (maxInt = 50) => {
-  return Math.ceil(Math.random() * maxInt);
+  const array = new Uint32Array(10);
+  self.crypto.getRandomValues(array);
+  return array[0];
 };
 
-export const generateRandomArray = (maxItems = 10) => {
-  return Array.from(Array(generateRandomInt(maxItems)).keys());
-};
 
 export const generateRandomId = (): string => {
   return String(generateRandomInt());
