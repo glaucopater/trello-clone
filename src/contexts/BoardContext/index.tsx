@@ -1,8 +1,11 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, Reducer, useReducer } from "react";
 import { CardProps } from "../../components/Card";
 import { SwimlaneProps } from "../../components/Swimlane";
 import { useBoardReducer } from "../../hooks/useBoardReducer";
-import { ReducerActionType } from "../../hooks/useBoardReducer/actions";
+import {
+  ReducerAction,
+  ReducerActionType,
+} from "../../hooks/useBoardReducer/actions";
 import { getInitialState } from "../../utils";
 
 export type ContextProps = {
@@ -10,7 +13,7 @@ export type ContextProps = {
   addSwimlane: (name: string) => void;
   editSwimlane: (swimlane: SwimlaneProps) => void;
   addCard: (swimlaneId: string) => void;
-  deleteCard: (cardId: string) => void;
+  deleteCard: (swimlaneId: string, cardId: string) => void;
   editCard: (card: CardProps, swimlaneId: string) => void;
   moveCard: (
     cardId: string,
@@ -50,10 +53,10 @@ export const BoardProvider = ({ children }: { children: React.ReactNode }) => {
       });
       dispatch({ type: ReducerActionType.UPDATE_LOCALSTORAGE, payload: state });
     },
-    deleteCard: (id: string) => {
+    deleteCard: (swimlaneId: string, cardId: string) => {
       dispatch({
         type: ReducerActionType.DELETE_CARD,
-        payload: { id, name: "New", cards: [] },
+        payload: { swimlaneId, cardId },
       });
       dispatch({ type: ReducerActionType.UPDATE_LOCALSTORAGE, payload: state });
     },

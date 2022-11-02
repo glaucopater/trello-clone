@@ -4,26 +4,16 @@ import { Swimlane } from "./";
 import { getInitialState } from "../../utils";
 import { Board } from "../../containers/Board";
 
-const addCard = jest.fn();
-const editCard = jest.fn();
-const moveCard = jest.fn();
-const deleteCard = jest.fn();
-const addSwimlane = jest.fn();
-const editSwimlane = jest.fn();
-const loadLocalStorage = jest.fn();
-const updateLocalStorage = jest.fn();
-const resetBoard = jest.fn();
-
 const mockContextProps: ContextProps = {
-  addCard,
-  editCard,
-  moveCard,
-  deleteCard,
-  addSwimlane,
-  editSwimlane,
-  loadLocalStorage,
-  updateLocalStorage,
-  resetBoard,
+  addCard: jest.fn(),
+  editCard: jest.fn(),
+  moveCard: jest.fn(),
+  deleteCard: jest.fn(),
+  addSwimlane: jest.fn(),
+  editSwimlane: jest.fn(),
+  loadLocalStorage: jest.fn(),
+  updateLocalStorage: jest.fn(),
+  resetBoard: jest.fn(),
   swimlaneList: getInitialState(),
 };
 
@@ -33,12 +23,10 @@ it("should add a new swimlane", () => {
       <Board />
     </BoardContext.Provider>
   );
-
   const { getByText } = container;
-
   fireEvent.click(getByText("Add Swimlane"));
   fireEvent.click(getByText("Save"));
-  expect(addSwimlane).toHaveBeenCalledTimes(1);
+  expect(mockContextProps.addSwimlane).toHaveBeenCalledTimes(1);
 });
 
 it("should add a new card to the board", () => {
@@ -49,5 +37,5 @@ it("should add a new card to the board", () => {
   );
 
   fireEvent.click(getByText("Add Card"));
-  expect(addCard).toHaveBeenCalledTimes(1);
+  expect(mockContextProps.addCard).toHaveBeenCalledTimes(1);
 });

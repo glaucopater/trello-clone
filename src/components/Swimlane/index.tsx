@@ -1,6 +1,6 @@
 import { Card, CardProps, MemoizedCard } from "../Card";
 import "./Swimlane.css";
-import { SetStateAction, useContext, useState } from "react";
+import { SetStateAction, useContext, useEffect, useState } from "react";
 import { BoardContext, ContextProps } from "../../contexts/BoardContext";
 import { AddCardButton } from "../AddCardButton";
 import { CardsCounter } from "../CardsCounter";

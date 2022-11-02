@@ -24,7 +24,7 @@ export const Card = (cardProps: CardProps) => {
   const [currentContent, setCurrentContent] = useState(content);
 
   const handleDeleteCard = () => {
-    deleteCard(id);
+    deleteCard(currentSwimlaneId, id);
   };
 
   const handleEditCard = () => {
