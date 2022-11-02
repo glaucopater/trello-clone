@@ -95,10 +95,6 @@ describe("test card actions", () => {
       },
       "1"
     );
-    expect(mockContextProps.moveCard).toHaveBeenCalledWith(
-      "1.1",
-      "1",
-      "2"
-    );
+    expect(mockContextProps.moveCard).toHaveBeenCalledWith("1.1", "1", "2");
   });
 });

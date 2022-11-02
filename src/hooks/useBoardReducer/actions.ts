@@ -40,7 +40,7 @@ export type EditCardAction = {
 
 export type DeleteCardAction = {
   type: ReducerActionType.DELETE_CARD;
-  payload: { swimlaneId: string, cardId: string };
+  payload: { swimlaneId: string; cardId: string };
 };
 
 export type LoadLocalStorage = {
