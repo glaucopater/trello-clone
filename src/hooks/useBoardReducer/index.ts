@@ -1,7 +1,7 @@
 import { Reducer } from "react";
 import { SwimlaneProps } from "../../components/Swimlane";
 import { initialState } from "../../store";
-import { generateRandomId, getInitialState, sortArrayById } from "../../utils";
+import { generateRandomId, sortArrayById } from "../../utils";
 import { ReducerAction, ReducerActionType } from "./actions";
 
 export const useBoardReducer: Reducer<SwimlaneProps[], ReducerAction> = (
@@ -39,20 +39,23 @@ export const useBoardReducer: Reducer<SwimlaneProps[], ReducerAction> = (
         (swimlane) => swimlane.id !== selectedSwimlane.id
       );
       return sortArrayById([...theOtherSwimlanes, updatedSwimlane]);
-    case ReducerActionType.DELETE_CARD: {
-      // delete card by swimlane and id
-      const cardToBeDeleted = action.payload;
-      const updatedSwimlane = state.map((swimlane) => {
-        return {
-          id: swimlane.id,
-          name: swimlane.name,
-          cards: swimlane.cards.filter(
-            (card) => card.id !== cardToBeDeleted.id
-          ),
-        };
-      });
-      return updatedSwimlane;
-    }
+    case ReducerActionType.DELETE_CARD:
+      // delete card by swimlane id and card id
+      const { swimlaneId, cardId } = action.payload;
+      const currentSwimlane = state.find(
+        (swimlane) => swimlane.id === swimlaneId
+      );
+      const swimlaneToBeUdpated = currentSwimlane;
+      if (swimlaneToBeUdpated) {
+        swimlaneToBeUdpated.cards = currentSwimlane.cards.filter(
+          (card) => card.id !== cardId
+        );
+      }
+      return sortArrayById([
+        ...state.filter((swimlane) => swimlane.id !== swimlaneId),
+        swimlaneToBeUdpated,
+      ]);
+
     case ReducerActionType.EDIT_CARD: {
       // edit card by content and swimlane and id
       const { card: editedCard, swimlaneId } = action.payload;
@@ -62,7 +65,7 @@ export const useBoardReducer: Reducer<SwimlaneProps[], ReducerAction> = (
       if (swimlaneToBeUpdated) {
         swimlaneToBeUpdated.cards = swimlaneToBeUpdated.cards.map((card) => {
           if (card.id === editedCard.id) return editedCard;
-          else return card;
+          return card;
         });
       }
       const theOtherSwimlanes = state.filter(

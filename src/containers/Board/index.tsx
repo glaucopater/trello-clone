@@ -10,7 +10,7 @@ export const Board = () => {
 
   return (
     <div className="Board">
-      {state.map((swimlane, index) => (
+      {state?.map((swimlane, index) => (
         <Swimlane key={index} {...swimlane} />
       ))}
       <AddSwimlaneButton />

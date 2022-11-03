@@ -23,5 +23,6 @@ export const getInitialState = () => {
   const store = localStorage.getItem("state");
   if (store) {
     return JSON.parse(store);
-  } else return initialState;
+  }
+  return initialState;
 };
