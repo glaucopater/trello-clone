@@ -2,9 +2,6 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-After some consideration on the UI I implemented the skeleton of the application, starting from the ui
-components, then the state manager, then adding all the required actions for managing the board.
-At the end I focused on improving performance and UI/UX aspects.
 
 ## [Live Demo](https://taupe-lamington-c1e102.netlify.app/) ⚡
 
@@ -12,7 +9,7 @@ At the end I focused on improving performance and UI/UX aspects.
 
 # State manager 🏬
 
-For the state management my choice went on implementing a simple state manager based on React Context (in order to share a store in different part of the application) and a custom hook using useReducer.
+For the state management my choice went on implementing a simple state manager based on React Context (in order to share a store in different parts of the application) and a custom hook using useReducer.
 All the logic about dispatching actions (adding, editing, moving, removing cards) are delegated to it.
 The state is persisted in the browser Localstorage.
 
