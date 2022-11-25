@@ -12,7 +12,7 @@ import "./Card.css";
 export type CardProps = {
   id: string;
   content?: string;
-  currentSwimlaneId: string;
+  currentSwimlaneId: number;
 };
 
 export const Card = (cardProps: CardProps) => {
@@ -39,7 +39,7 @@ export const Card = (cardProps: CardProps) => {
 
   const handleOnDragStart = (event: DragEvent<HTMLElement>, id: string) => {
     event.dataTransfer.setData("id", id);
-    event.dataTransfer.setData("swimlane", currentSwimlaneId);
+    event.dataTransfer.setData("swimlane", String(currentSwimlaneId));
   };
 
   const handleOnChangeContent = (event: {
@@ -104,4 +104,4 @@ export const Card = (cardProps: CardProps) => {
   );
 };
 
-export const MemoizedCard = React.memo(Card);
+ 

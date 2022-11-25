@@ -1,4 +1,4 @@
-import { Card, CardProps, MemoizedCard } from "../Card";
+import { Card, CardProps } from "../Card";
 import "./Swimlane.css";
 import { SetStateAction, useContext, useEffect, useState } from "react";
 import { BoardContext, ContextProps } from "../../contexts/BoardContext";
@@ -7,7 +7,7 @@ import { CardsCounter } from "../CardsCounter";
 import React from "react";
 
 export type SwimlaneProps = {
-  id: string;
+  id: number;
   name: string;
   cards: CardProps[];
 };
@@ -34,7 +34,7 @@ export const Swimlane = (swimlaneProps: SwimlaneProps) => {
   const handleOnDrop = (event: DragEvent | React.SyntheticEvent) => {
     const dragEvent = event as React.DragEvent;
     const cardId = dragEvent.dataTransfer.getData("id");
-    const fromSwimlaneId = dragEvent.dataTransfer.getData("swimlane");
+    const fromSwimlaneId = Number(dragEvent.dataTransfer.getData("swimlane"));
     if (fromSwimlaneId !== id) moveCard(cardId, fromSwimlaneId, id);
   };
 
@@ -89,13 +89,11 @@ export const Swimlane = (swimlaneProps: SwimlaneProps) => {
       <ul className="Card-List">
         {cards.map((item, index) => (
           <li key={index}>
-            <MemoizedCard {...item} currentSwimlaneId={id} />
+            <Card {...item} currentSwimlaneId={id} />
           </li>
         ))}
       </ul>
-      <AddCardButton onClickHandler={handleAddCard} id={id} />
+      <AddCardButton onClickHandler={handleAddCard} swimlaneId={id} />
     </section>
   );
 };
-
-export const MemoizedSwimlane = React.memo(Swimlane);

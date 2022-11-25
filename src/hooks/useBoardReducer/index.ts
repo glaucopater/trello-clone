@@ -13,7 +13,7 @@ export const useBoardReducer: Reducer<SwimlaneProps[], ReducerAction> = (
       const name = action.payload;
       const nextSwimlaneId = state.length + 1;
       const emptySwimlane: SwimlaneProps = {
-        id: String(nextSwimlaneId),
+        id: nextSwimlaneId,
         name: name,
         cards: [],
       };
