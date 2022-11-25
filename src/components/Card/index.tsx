@@ -103,5 +103,3 @@ export const Card = (cardProps: CardProps) => {
     </article>
   );
 };
-
- 
