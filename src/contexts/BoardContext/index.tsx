@@ -12,13 +12,13 @@ export type ContextProps = {
   swimlaneList: SwimlaneProps[];
   addSwimlane: (name: string) => void;
   editSwimlane: (swimlane: SwimlaneProps) => void;
-  addCard: (swimlaneId: string) => void;
-  deleteCard: (swimlaneId: string, cardId: string) => void;
-  editCard: (card: CardProps, swimlaneId: string) => void;
+  addCard: (swimlaneId: number) => void;
+  deleteCard: (swimlaneId: number, cardId: string) => void;
+  editCard: (card: CardProps, swimlaneId: number) => void;
   moveCard: (
     cardId: string,
-    fromSwimlaneId: string,
-    toSwimlaneId: string
+    fromSwimlaneId: number,
+    toSwimlaneId: number
   ) => void;
   loadLocalStorage: () => void;
   updateLocalStorage: (swimlaneList: SwimlaneProps[]) => void;
@@ -46,28 +46,28 @@ export const BoardProvider = ({ children }: { children: React.ReactNode }) => {
       });
       dispatch({ type: ReducerActionType.UPDATE_LOCALSTORAGE, payload: state });
     },
-    addCard: (swimlaneId: string) => {
+    addCard: (swimlaneId: number) => {
       dispatch({
         type: ReducerActionType.CREATE_CARD,
         payload: { id: swimlaneId, name: "New!", cards: [] },
       });
       dispatch({ type: ReducerActionType.UPDATE_LOCALSTORAGE, payload: state });
     },
-    deleteCard: (swimlaneId: string, cardId: string) => {
+    deleteCard: (swimlaneId: number, cardId: string) => {
       dispatch({
         type: ReducerActionType.DELETE_CARD,
         payload: { swimlaneId, cardId },
       });
       dispatch({ type: ReducerActionType.UPDATE_LOCALSTORAGE, payload: state });
     },
-    editCard: (card: CardProps, swimlaneId: string) => {
+    editCard: (card: CardProps, swimlaneId: number) => {
       dispatch({
         type: ReducerActionType.EDIT_CARD,
         payload: { card, swimlaneId },
       });
       dispatch({ type: ReducerActionType.UPDATE_LOCALSTORAGE, payload: state });
     },
-    moveCard: (id: string, fromSwimlaneId: string, toSwimlaneId: string) => {
+    moveCard: (id: string, fromSwimlaneId: number, toSwimlaneId: number) => {
       dispatch({
         type: ReducerActionType.MOVE_CARD,
         payload: { id, fromSwimlaneId, toSwimlaneId },

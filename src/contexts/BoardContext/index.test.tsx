@@ -27,19 +27,19 @@ function TestComponent(mockContextProps: ContextProps) {
     (initialStore as ContextProps) || {};
 
   useEffect(() => {
-    addCard("1");
+    addCard(1);
   }, [mockContextProps, addCard]);
 
   useEffect(() => {
-    deleteCard("1", "1");
+    deleteCard(1, "1");
   }, [mockContextProps, addCard]);
 
   useEffect(() => {
-    editCard(sampleState[0].cards[0], "1");
+    editCard(sampleState[0].cards[0], 1);
   }, [mockContextProps, addCard]);
 
   useEffect(() => {
-    moveCard(sampleState[0].cards[0].id, "1", "2");
+    moveCard(sampleState[0].cards[0].id, 1, 2);
   }, [mockContextProps, moveCard]);
 
   return <div id="result">{JSON.stringify(swimlaneList)}</div>;
@@ -79,22 +79,22 @@ describe("test card actions", () => {
         type: ReducerActionType.MOVE_CARD,
         payload: {
           id: sampleState[0].cards[0].id,
-          fromSwimlaneId: "1",
-          toSwimlaneId: "2",
+          fromSwimlaneId: 1,
+          toSwimlaneId: 2,
         },
       });
     });
 
-    expect(mockContextProps.addCard).toHaveBeenCalledWith("1");
-    expect(mockContextProps.deleteCard).toHaveBeenCalledWith("1", "1");
+    expect(mockContextProps.addCard).toHaveBeenCalledWith(1);
+    expect(mockContextProps.deleteCard).toHaveBeenCalledWith(1, "1");
     expect(mockContextProps.editCard).toHaveBeenCalledWith(
       {
         content: "lorem ipsum 1.1",
-        currentSwimlaneId: "1",
+        currentSwimlaneId: 1,
         id: "1.1",
       },
-      "1"
+      1
     );
-    expect(mockContextProps.moveCard).toHaveBeenCalledWith("1.1", "1", "2");
+    expect(mockContextProps.moveCard).toHaveBeenCalledWith("1.1", 1, 2);
   });
 });

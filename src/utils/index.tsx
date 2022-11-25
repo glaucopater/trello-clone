@@ -11,10 +11,15 @@ export const generateRandomId = (): string => {
 };
 
 export const sortArrayById = (arr: any[]) => {
-  return sortArrayByProperty(arr, "id");
+  const tempArray = [...arr];
+
+  tempArray.sort((a, b) => parseFloat(a.id) - parseFloat(b.id));
+
+  return tempArray; // sortArrayByProperty(arr, "id");
 };
 
 export const sortArrayByProperty = (arr: any[], property: string) => {
+  console.log(arr, property);
   arr.sort((a, b) => a[property].charCodeAt(0) - b[property].charCodeAt(0));
   return arr;
 };
