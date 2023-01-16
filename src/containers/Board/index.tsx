@@ -8,6 +8,9 @@ export const Board = () => {
   const initialStore = useContext(BoardContext);
   const { swimlaneList: state } = (initialStore as ContextProps) || {};
 
+
+  console.log(state);
+
   return (
     <div className="Board">
       {state?.map((swimlane, index) => (

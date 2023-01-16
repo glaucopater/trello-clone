@@ -84,10 +84,10 @@ export const Swimlane = (swimlaneProps: SwimlaneProps) => {
             currentName
           )}
         </span>
-        <CardsCounter count={cards.length} />
+        <CardsCounter count={cards?.length || 0} />
       </div>
       <ul className="Card-List">
-        {cards.map((item, index) => (
+        {cards?.map((item, index) => (
           <li key={index}>
             <Card {...item} currentSwimlaneId={id} />
           </li>
