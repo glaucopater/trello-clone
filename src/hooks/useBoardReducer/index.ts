@@ -1,5 +1,6 @@
 import { Reducer } from "react";
 import { SwimlaneProps } from "../../components/Swimlane";
+import { LOCALSTORAGE_STATE_KEY } from "../../config";
 import { initialState } from "../../store";
 import { generateRandomId, sortArrayById } from "../../utils";
 import { ReducerAction, ReducerActionType } from "./actions";
@@ -103,10 +104,10 @@ export const useBoardReducer: Reducer<SwimlaneProps[], ReducerAction> = (
       const store = localStorage.getItem("state");
       return store ? JSON.parse(store) : state;
     case ReducerActionType.UPDATE_LOCALSTORAGE:
-      localStorage.setItem("state", JSON.stringify(state));
+      localStorage.setItem(LOCALSTORAGE_STATE_KEY, JSON.stringify(state));
       return state;
     case ReducerActionType.RESET_BOARD:
-      localStorage.setItem("state", JSON.stringify(initialState));
+      localStorage.setItem(LOCALSTORAGE_STATE_KEY, JSON.stringify(initialState));
       return state;
     default:
       return state;

@@ -1,3 +1,4 @@
+import { LOCALSTORAGE_STATE_KEY } from "../config";
 import { initialState } from "../store";
 
 export const generateRandomInt = () => {
@@ -12,9 +13,7 @@ export const generateRandomId = (): string => {
 
 export const sortArrayById = (arr: any[]) => {
   const tempArray = [...arr];
-
   tempArray.sort((a, b) => parseFloat(a.id) - parseFloat(b.id));
-
   return tempArray; // sortArrayByProperty(arr, "id");
 };
 
@@ -25,7 +24,7 @@ export const sortArrayByProperty = (arr: any[], property: string) => {
 };
 
 export const getInitialState = () => {
-  const store = localStorage.getItem("state");
+  const store = localStorage.getItem(LOCALSTORAGE_STATE_KEY);
   if (store) {
     return JSON.parse(store);
   }
