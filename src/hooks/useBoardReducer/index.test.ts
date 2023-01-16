@@ -50,9 +50,7 @@ describe("useBoardReducer", () => {
       {
         id: 2,
         name: "Swimlane 2",
-        cards: [
-          { id: expect.any(String), content: expect.any(String) },
-        ],
+        cards: [{ id: expect.any(String), content: expect.any(String) }],
       },
     ];
     expect(useBoardReducer(initialState, action)).toEqual(expectedState);

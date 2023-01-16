@@ -107,7 +107,10 @@ export const useBoardReducer: Reducer<SwimlaneProps[], ReducerAction> = (
       localStorage.setItem(LOCALSTORAGE_STATE_KEY, JSON.stringify(state));
       return state;
     case ReducerActionType.RESET_BOARD:
-      localStorage.setItem(LOCALSTORAGE_STATE_KEY, JSON.stringify(initialState));
+      localStorage.setItem(
+        LOCALSTORAGE_STATE_KEY,
+        JSON.stringify(initialState)
+      );
       return state;
     default:
       return state;
