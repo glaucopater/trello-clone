@@ -25,7 +25,8 @@
     "eject": "react-scripts eject",
     "pretty": "yarn prettier --write .",
     "lint": "eslint --ext=ts,tsx --max-warnings 0 .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "cover": "yarn test --coverage"
   },
   "eslintConfig": {
     "extends": [
